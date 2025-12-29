@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио студента - Второй курс</title>
+    <link rel="stylesheet" href="./Style.css">
+    <style>
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .certificate-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .certificate-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-bottom: 1px solid #eee;
+            padding: 15px;
+            background: white;
+        }
+        
+        .certificate-item p {
+            padding: 15px;
+            text-align: center;
+            color: #555;
+            font-size: 1rem;
+            margin-top: auto;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Горизонтальные грамоты */
+        .horizontal-container {
+            grid-column: 1 / -1;
+            margin-top: 30px;
+        }
+        
+        .horizontal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .horizontal-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .horizontal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .horizontal-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 10px;
+            background: white;
+        }
+        
+        .horizontal-item p {
+            padding: 10px;
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+            margin-top: auto;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 2%;
+        }
+        
+        .modal-caption {
+            margin: 15px auto;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            max-width: 80%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #cd99d0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header class="header">
+            <h2 class="site-title">Сайт портфолио студента</h2>
+        </header>
+        
+        <aside class="sidebar">
+            <nav class="navigation">
+                <a class="nav-link" href="index.html">Главная</a>
+                <a class="nav-link" href="1Курс.html">Первый курс</a>
+                <a class="nav-link" href="2Курс.html">Второй курс</a>
+                <a class="nav-link active" href="3Курс.html">Третий курс</a>
+
+            </nav>
+        </aside>
+        
+        <main class="content">
+            <h2 class="content-title">Грамоты и сертификаты</h2>
+            <div class="certificates-grid">
+                <!-- Горизонтальные грамоты -->
+                <div class="horizontal-container">
+                    <div class="horizontal-grid">
+                        <div class="horizontal-item" onclick="openModal('./IT-Диктант.png', 'Всероссийская образовательная акция IT-Диктант')">
+                            <img src="/IT-Диктант.png" alt="Всероссийская образовательная акция IT-Диктант ">
+                            <p>Всероссийская образовательная акция "IT-Диктант"</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Налоговый диктант.phg', 'IV Всероссийский налоговый диктант')">
+                            <img src="/Налоговый диктант.png" alt="IV Всероссийский налоговый диктант">
+                            <p>IV Всероссийский налоговый диктант</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Военно-патриотический диктант.png', 'IV Ежегодная Всероссийская просветительская акция Военно-патриотический диктант 2025')">
+                            <img src="./Военно-патриотический диктант.png" alt="IV Ежегодная Всероссийская просветительская акция Военно-патриотический диктант 2025">
+                            <p>IV Ежегодная Всероссийская просветительская акция "Военно-патриотический диктант 2025"</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Студент года Всероссийский этап.png', 'Диплом финалиста Российской национальной премии Студент года в номинации Профессионал года')">
+                            <img src="./Студент года Всероссийский этап.png" alt="Диплом финалиста Российской национальной премии 'Студент года' в номинации 'Профессионал года'">
+                            <p>Диплом финалиста Российской национальной премии 'Студент года' в номинации 'Профессионал года'</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Хакатон.png', 'Сертификат участника стартового онлайн-хакатона')">
+                            <img src="./Хакатон.png" alt="Сертификат участника стартового-онлайн хакатона">
+                            <p>Сертификат участника стартового онлайн-хакатона'</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Цифровая неделя.png', 'Образовательное мероприятие Цифровая неделя в Амурской области')">
+                            <img src="./Цифровая неделя.png" alt="Образовательное мероприятие 'Цифровая неделя в Амурской области'">
+                            <p>Образовательное мероприятие 'Цифровая неделя в Амурской области'</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Офицер безопасности.png', 'Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО')">
+                        <img src="./Офицер безопасности.png" alt="Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО">
+                            <p>Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./РЕД ОС.png', 'Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО')">
+                            <img src="./РЕД ОС.png" alt="Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО">
+                                <p>Сертификат участника международной олимпиады "ТРАЕКТОРИЯ БУДУЩЕГО"</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Технологическое предпринимательство.png', 'Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО')">
+                            <img src="./Технологическое предпринимательство.png" alt="Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО">
+                                <p>Сертификат участника международной олимпиады ТРАЕКТОРИЯ БУДУЩЕГО</p>
+                        </div>
+                        <div class="horizontal-item" onclick="openModal('./Финансовая грамотность.png', 'Сертификат участника проекта оналйн-уроки по финансовой грамотности')">
+                            <img src="./Финансовая грамотность.png" alt="Сертификат участника проекта оналйн-уроки по финансовой грамотности">
+                               <p>Сертификат участника проекта оналйн-уроки по финансовой грамотности</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно -->
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div class="modal-caption" id="caption"></div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2023 Портфолио студента. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Функция открытия модального окна
+        function openModal(src, caption) {
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('caption');
+            
+            modal.style.display = "block";
+            modalImg.src = src;
+            captionText.innerHTML = caption;
+            document.body.style.overflow = "hidden";
+        }
+        
+        // Функция закрытия модального окна
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // Закрытие по клику вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Закрытие по клавише ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
